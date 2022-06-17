@@ -1,0 +1,221 @@
+.sloov-container{
+    padding: 100px 0px 0px 20px;
+}
+
+.login{
+    padding: 25px;
+    background-color: rgb(172, 255, 47);
+    width: 250px;
+    margin-bottom: 30px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+}
+
+.logout{
+    padding: 25px;
+    background-color:tomato;
+    width: 250px;
+    margin-bottom: 30px;
+    text-align: center;
+    border-radius: 5px;
+    color: black;
+}
+
+.sloovi-wrapper{
+    width: 300px;
+    
+}
+
+.task-label-and-quantity{
+    font-size: 13px;
+}
+
+.task-wrapper span{
+    margin-right: 200px;
+    
+ }
+
+.task-wrapper{
+    background-color: #f9f9fa;
+    display: flex;
+    justify-content:space-between;
+    padding: 0px 0px 0px 7px;
+    align-items: center;
+    border: 1px solid #eaeaea;
+}
+
+
+.add{
+    padding: 7px;
+    border: 1px solid#eaeaea;
+    border-top: none;
+    border-bottom: none;
+    border-right: none;
+}
+
+
+
+.form{
+    padding: 7px;
+    background-color: #edf7fc;
+}
+
+
+.all-task-wrap{
+    position: relative;
+    
+}
+
+/* .form-update-mode{
+    padding: 11px;
+    background-color: #edf7fc;
+    top: 0;
+    max-width: max-content;
+    position: absolute;
+    z-index: 1;
+} */
+
+
+.noForm{
+    display: none;
+}
+
+
+
+.task-titles{
+    font-size: 13px;
+    margin-bottom: 3px;
+}
+
+.task-input-wrapper{
+    width: 278px;
+    margin-top: 15px;
+}
+
+.task-input{
+    width: 100%;
+    border: 1px solid #eaeaea;
+    height: 25px;
+    outline:1px solid #8ad0f3;
+}
+
+.task-input:placeholder-shown{
+    color: #edf7fc;
+    outline:2px solid #8ad0f3;
+}
+
+.date-and-time{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+
+.date-and-time-input{
+    width: 133px;
+    border: 1px solid #eaeaea;
+    height: 25px;
+}
+
+.task-input-wrapper and .date-and-time input:disabled{
+    background-color: rgb(228, 214, 214);
+
+}
+
+.cancel-save-wrapper{
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.delete-cancel-save-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.delete-cancel-save-wrapper .delete{
+    cursor: pointer;
+}
+
+.btn-and-cancel-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+.cancel-button{
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.btn-and-cancel-wrapper button{
+    width: 100px;
+    height: 30px;
+    background-color: #47bb7f;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
+.btn-and-cancel-wrapper button:disabled{
+    cursor: not-allowed;
+    background-color: rgb(231, 223, 223);
+
+}
+
+.editable{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid#eaeaea;
+    padding: 7px;
+}
+
+.editable-img-task-time-wrapper{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.editable-img-task-time-wrapper img{
+    max-width: 50px;
+}
+
+.editable-task{
+    font-size: 13px;
+}
+
+.editable-time{
+    color: red;
+    font-size: 10px;
+}
+
+.icon-wrapper{
+    display: flex;
+    align-items: center;
+}
+
+.icon{
+    padding: 2px;
+    border: 1px solid#eaeaea;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+/* #edit{
+    display: none;
+}
+
+.icon-wrapper:hover > #edit{
+    display: block;
+} */
+
+.inner-icons-wrapper{
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+}
