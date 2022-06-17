@@ -13,7 +13,6 @@ const SlooviTest = () => {
   const isFetching = useSelector((state) => state.task.isFetching);
   const error = useSelector((state) => state.user.error);
   const Tasks = useSelector((state) => state.task.Tasks);
-
   const [AddTask, setAddTask] = useState(false);
   const [task_msg, setTask] = useState("");
   const [task_date, setDate] = useState("");
@@ -23,7 +22,7 @@ const SlooviTest = () => {
   const dispatch = useDispatch();
   const [hover, setHover] = useState(false);
 
-
+// TOGGLE UPDATE MODE
   const toggle = (index) => {
     if (updateMode === index) {
       return setUpdateMode(null);
@@ -31,6 +30,8 @@ const SlooviTest = () => {
     setUpdateMode(index);
   };
 
+
+// HOVER UPDATE ICON
   const mousehover = (index) => {
     if (hover === index) {
       return setHover(null);
@@ -38,7 +39,7 @@ const SlooviTest = () => {
     setHover(index);
   };
   
-
+// UPDATE TASK
   const handleUpdate = (id) => {
     const task = {
       task_time,
@@ -51,24 +52,31 @@ const SlooviTest = () => {
     updateTasks(id, task, dispatch);
   };
 
+
+// DELETE TASK
   const handleDelete = (id) => {
     deleteTask(id, dispatch);
   };
 
+
+
+// TASK DATE
   var date = new Date();
-
   const offset = date.getTimezoneOffset();
-
   var time_zone = parseInt(offset * 60);
 
-  const str = tas.split(":");
+  
 
+// TASK TIME
+  const str = tas.split(":");
   var task_time =
     parseInt(str[0], 10) * 60 * 60 +
     parseInt(str[1], 10) * 60 +
     parseInt(str[2], 10);
 
 
+
+// ADD TASK
   const handleClick = (e) => {
     e.preventDefault();
     const task = {

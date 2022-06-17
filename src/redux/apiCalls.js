@@ -35,10 +35,10 @@ export const addTask = async (task, dispatch) => {
     );
     dispatch(addTaskSuccess(res));
   } catch (err) {
-    console.log(err);
     dispatch(addTaskFailure());
   }
 };
+
 
 // export const getTasks = async (id) => {
 //   try {
@@ -50,6 +50,7 @@ export const addTask = async (task, dispatch) => {
 //   } 
   
 // };
+
 
 export const updateTasks = async (id, task, dispatch) => {
   dispatch(updateTaskStart());

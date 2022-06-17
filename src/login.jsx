@@ -5,21 +5,12 @@ import { useDispatch, useSelector } from "react-redux";
 
 
 
-    const Login = () => {
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+ const Login = () => {
     const dispatch = useDispatch()
-    const {isFetching} = useSelector((state)=> state.user)
-    const [value, setValue] = useState()
-    const [Time, setTime] = useState("")
 
 
 
-    // const handleClick = (e) => {
-    //     e.preventDefault()
-    //     login(dispatch, {email, password});
-    // }
-
+    // AUTO LOGIN
     useEffect(() => {
         const handleClick = () => {
             
@@ -27,6 +18,13 @@ import { useDispatch, useSelector } from "react-redux";
         }
         handleClick()
       }, [])
+
+
+
+     // const handleClick = (e) => {
+    //     e.preventDefault()
+    //     login(dispatch, {email, password});
+    // }
 
     return ( 
         <div className="login-container">
