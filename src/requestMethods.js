@@ -4,7 +4,11 @@ const BASE_URL = "https://stage.api.sloovi.com";
 
 
 
-const TOKEN = JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser.data.results.token
+const TOKEN = JSON.parse(JSON.parse(localStorage.getItem('persist:root'))?.user ?? null)?.currentUser?.data.results.token || null;
+
+console.log(TOKEN)
+
+
 
 export const taskRequest = axios.create({
   baseURL: BASE_URL,
