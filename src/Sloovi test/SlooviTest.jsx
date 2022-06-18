@@ -302,7 +302,6 @@ const SlooviTest = () => {
           </div>
         ))}
       </div>
-      <div>{validationAfterCheckMessage}</div>
     </div>
   );
 };
