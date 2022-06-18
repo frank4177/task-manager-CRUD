@@ -16,7 +16,6 @@ const SlooviTest = () => {
   // const validation = useSelector((state) => state.task.Tasks.find(koom => koom));
   const error = useSelector((state) => state.user.error);
   const Tasks = useSelector((state) => state.task.Tasks);
-  // const [Tasks, setTasks] = useState("");
   const [AddTask, setAddTask] = useState(false);
   const [task_msg, setTask] = useState("");
   const [task_date, setDate] = useState("");
