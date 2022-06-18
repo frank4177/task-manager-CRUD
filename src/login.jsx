@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
     useEffect(() => {
         const handleClick = () => {
             
-            login(dispatch, {email: "smithwills1989@gmail.com", password: "12345678"});
+            login(dispatch, {email: process.env.REACT_APP_USER_NAME, password: process.env.REACT_APP_PASSWORD});
         }
         handleClick()
       }, [])
