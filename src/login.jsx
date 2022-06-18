@@ -12,9 +12,6 @@ import { useDispatch, useSelector } from "react-redux";
 //   const isFetching = useSelector((state) => state.user.isFetching);
 
 
-
-// LOAD WINDOW
-
     
 
 
@@ -36,7 +33,7 @@ import { useDispatch, useSelector } from "react-redux";
       
 
 
-    // // MANUAL CLICK LOGIN
+    // MANUAL CLICK LOGIN
     //  const handleClick = (e) => {
     //     e.preventDefault()
     //     login(dispatch, {email, password});
@@ -48,7 +45,7 @@ import { useDispatch, useSelector } from "react-redux";
                 <h1>SIGN IN</h1>
                 <form action="" style={{display: "flex ", flexDirection: "column", gap:10, width: 200}}>
                     <input type="email" placeholder="username" defaultValue='smithwills1989@gmail.com'  onChange={(e) => setEmail(e.target.value)} required/>
-                    email:
+                    email: 
                     <input placeholder="password" type="password" defaultValue='12345678'  onChange={(e) => setPassword(e.target.value)} required/>
                     <button type="submit" onClick={handleClick} style={{width: 100}}>LOGIN</button>
                 </form>
