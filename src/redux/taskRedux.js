@@ -31,7 +31,7 @@ export const TaskSlice = createSlice({
     deleteTaskSuccess: (state, action) => {
       state.isFetching = false;
       state.Tasks.splice(
-        state.Tasks.findIndex((item) => item.data.results.id === action.payload.data.results.id),
+        state.Tasks.findIndex((item) => item.id === action.payload.id),
         1
       );
       state.quantity -= 1;
@@ -50,7 +50,7 @@ export const TaskSlice = createSlice({
       state.isFetching = false;
 
       state.Tasks[
-        state.Tasks.findIndex((item) => item.data.results.id === action.payload.data.results.id)
+        state.Tasks.findIndex((item) => item.id === action.payload.id)
       ] = action.payload;
       state.is_completed = 1;
     },

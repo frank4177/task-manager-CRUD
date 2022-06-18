@@ -6,6 +6,8 @@ import { MdModeEditOutline } from "react-icons/md";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { useSelector, useDispatch } from "react-redux";
 import { addTask, getTasks, updateTasks, deleteTask } from "../redux/apiCalls";
+import { taskRequest} from "../requestMethods";
+
 
 const SlooviTest = () => {
   const quantity = useSelector((state) => state.task.quantity);
@@ -14,6 +16,7 @@ const SlooviTest = () => {
   // const validation = useSelector((state) => state.task.Tasks.find(koom => koom));
   const error = useSelector((state) => state.user.error);
   const Tasks = useSelector((state) => state.task.Tasks);
+  // const [Tasks, setTasks] = useState("");
   const [AddTask, setAddTask] = useState(false);
   const [task_msg, setTask] = useState("");
   const [task_date, setDate] = useState("");
@@ -26,6 +29,10 @@ const SlooviTest = () => {
   const [validationAfterCheckMessage, setValidationAfterCheckMessage] = useState();
 
 
+
+  useEffect(()=>{
+    getTasks(dispatch)
+  },[dispatch])
 
   
 
@@ -188,13 +195,13 @@ const SlooviTest = () => {
                 onMouseLeave={() => mousehover(index)}
                   key={index}> 
               <div className="editable-img-task-time-wrapper">
-                <img src={task.data.results.assigned_user_icon} alt="" />
+                <img src={task.assigned_user_icon} alt="" />
                 <div className="editable-task-and-time-wrapper">
                   <div className="editable-task">
-                    {task.data.results.task_msg}
+                    {task.task_msg}
                   </div>
                   <div className="editable-time">
-                    {task.data.results.task_date}
+                    {task.task_date}
                   </div>
                 </div>
               </div>
@@ -231,7 +238,7 @@ const SlooviTest = () => {
                       onChange={(e) => setTask(e.target.value)}
                       className="task-input"
                       type="text"
-                      defaultValue={task.data.results.task_msg}
+                      defaultValue={task.task_msg}
                       disabled={isFetching}
                       autoFocus="true"
                     />
@@ -244,7 +251,7 @@ const SlooviTest = () => {
                         onChange={(e) => setDate(e.target.value)}
                         className="date-and-time-input"
                         type="date"
-                        defaultValue={task.data.results.task_date}
+                        defaultValue={task.task_date}
                         disabled={isFetching}
                       />
                     </div>
@@ -257,7 +264,7 @@ const SlooviTest = () => {
                         step="1"
                         className="date-and-time-input"
                         type="time"
-                        defaultValue={task.data.results.task_time}
+                        defaultValue={task.task_time}
                         disabled={isFetching}
                       />
                     </div>
@@ -270,12 +277,12 @@ const SlooviTest = () => {
                       name="assigned_user"
                       className="task-input"
                       type="text"
-                      defaultValue={task.data.results.assigned_user}
+                      defaultValue={task.assigned_user}
                       disabled={isFetching}
                     />
                   </div>
                 <div className="delete-cancel-save-wrapper">
-                  <div className="delete" onClick={(e) => { window.confirm( 'Are you sure you want to delete this Task?', ) && handleDelete(task.data.results.id) }}>
+                  <div className="delete" onClick={(e) => { window.confirm( 'Are you sure you want to delete this Task?', ) && handleDelete(task.id) }}>
                     <RiDeleteBin6Line />
                   </div>
                   <div className="btn-and-cancel-wrapper">
@@ -283,7 +290,7 @@ const SlooviTest = () => {
                     <button
                       onClick={(e) => {
                         e.preventDefault();
-                        handleUpdate(task.data.results.id);
+                        handleUpdate(task.id);
                       }}
                       disabled={isFetching}
                     >
