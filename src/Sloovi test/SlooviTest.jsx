@@ -95,7 +95,7 @@ const SlooviTest = () => {
 
   return (
     <div className="sloov-container">
-      {error ? <div className="logout">You're not logged in. please refresh</div> : <div className="login">You're logged in</div>}
+      {error ? <div className="logout">You're not logged in. please login</div> : <div className="login">You're logged in</div>}
       <div className="sloovi-wrapper">
         <div className="task-wrapper">
           <label className="task-label-and-quantity">TASKS</label>
