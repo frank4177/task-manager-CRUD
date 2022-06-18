@@ -34,6 +34,7 @@ export const addTask = async (task, dispatch) => {
       task
     );
     dispatch(addTaskSuccess(res));
+   
   } catch (err) {
     dispatch(addTaskFailure());
   }

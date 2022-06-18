@@ -9,33 +9,45 @@ import { useDispatch, useSelector } from "react-redux";
     const dispatch = useDispatch()
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-  const isFetching = useSelector((state) => state.user.isFetching);
-
-    
-    
+//   const isFetching = useSelector((state) => state.user.isFetching);
 
 
 
-
-    // AUTO LOGIN
-    // useEffect(() => {
-    //     const handleClick = () => {
-            
-    //         login(dispatch, {email, password});
-    //     }
-    //     handleClick()
-    //   }, [])
-
-
-    // CLICK LOGIN
-     const handleClick = (e) => {
-        e.preventDefault()
-        login(dispatch, {email, password});
+// LOAD WINDOW
+window.onload = function() {
+    if(!window.location.hash) {
+        window.location = window.location + '#loaded';
+        window.location.reload();
     }
+}
+    
+
+
+   // AUTO LOGIN
+    useEffect(() => {
+        const handleClick = () => {
+            
+            login(dispatch, {email: process.env.REACT_APP_USER_NAME, password: process.env.REACT_APP_PASSWORD});
+
+            window.onload()
+        }
+        handleClick()
+        
+      }, [])
+
+
+      
+
+
+    // // MANUAL CLICK LOGIN
+    //  const handleClick = (e) => {
+    //     e.preventDefault()
+    //     login(dispatch, {email, password});
+    // }
 
     return ( 
         <div className="login-container">
-            <div className="login-wrapper" style={{padding:30}}>
+            {/* <div className="login-wrapper" style={{padding:30}}>
                 <h1>SIGN IN</h1>
                 <form action="" style={{display: "flex ", flexDirection: "column", gap:10, width: 200}}>
                     <input type="email" placeholder="username" defaultValue='smithwills1989@gmail.com'  onChange={(e) => setEmail(e.target.value)} required/>
@@ -43,9 +55,8 @@ import { useDispatch, useSelector } from "react-redux";
                     <input placeholder="password" type="password" defaultValue='12345678'  onChange={(e) => setPassword(e.target.value)} required/>
                     <button type="submit" onClick={handleClick} style={{width: 100}}>LOGIN</button>
                 </form>
-            </div>
+            </div> */}
         
-            <div></div>
         </div>
      );
 }

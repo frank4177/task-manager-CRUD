@@ -11,6 +11,7 @@ const SlooviTest = () => {
   const quantity = useSelector((state) => state.task.quantity);
   const is_completed = useSelector((state) => state.task.is_completed);
   const isFetching = useSelector((state) => state.task.isFetching);
+  // const validation = useSelector((state) => state.task.Tasks.find(koom => koom));
   const error = useSelector((state) => state.user.error);
   const Tasks = useSelector((state) => state.task.Tasks);
   const [AddTask, setAddTask] = useState(false);
@@ -21,6 +22,12 @@ const SlooviTest = () => {
   const [updateMode, setUpdateMode] = useState(false);
   const dispatch = useDispatch();
   const [hover, setHover] = useState(false);
+  const [validationCheck, setValidationCheck] = useState();
+  const [validationAfterCheckMessage, setValidationAfterCheckMessage] = useState();
+
+
+
+  
 
 // TOGGLE UPDATE MODE
   const toggle = (index) => {
@@ -29,6 +36,15 @@ const SlooviTest = () => {
     }
     setUpdateMode(index);
   };
+
+  // useEffect(() => {
+  //   setValidationCheck(validation)
+  //   console.log(validationCheck);
+  //   validationCheck === "Invalid Access Token" ? setValidationAfterCheckMessage("If after saving you got a blank Task, please refresh your browser an try again") : console.log(false);
+    
+   
+  // }, [])
+  
 
 
 // HOVER UPDATE ICON
@@ -280,6 +296,7 @@ const SlooviTest = () => {
           </div>
         ))}
       </div>
+      <div>{validationAfterCheckMessage}</div>
     </div>
   );
 };
