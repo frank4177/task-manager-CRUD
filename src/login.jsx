@@ -7,41 +7,44 @@ import { useDispatch, useSelector } from "react-redux";
 
  const Login = () => {
     const dispatch = useDispatch()
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+  const isFetching = useSelector((state) => state.user.isFetching);
+
+    
+    
+
 
 
 
     // AUTO LOGIN
-    useEffect(() => {
-        const handleClick = () => {
+    // useEffect(() => {
+    //     const handleClick = () => {
             
-            login(dispatch, {email: process.env.REACT_APP_USER_NAME, password: process.env.REACT_APP_PASSWORD});
-        }
-        handleClick()
-      }, [])
+    //         login(dispatch, {email, password});
+    //     }
+    //     handleClick()
+    //   }, [])
 
 
-
-     // const handleClick = (e) => {
-    //     e.preventDefault()
-    //     login(dispatch, {email, password});
-    // }
+    // CLICK LOGIN
+     const handleClick = (e) => {
+        e.preventDefault()
+        login(dispatch, {email, password});
+    }
 
     return ( 
         <div className="login-container">
-            {/* <div className="login-wrapper">
+            <div className="login-wrapper" style={{padding:30}}>
                 <h1>SIGN IN</h1>
-                <form action="">
+                <form action="" style={{display: "flex ", flexDirection: "column", gap:10, width: 200}}>
                     <input type="email" placeholder="username" value="smithwills1989@gmail.com" onChange={(e) => setEmail(e.target.value)} required/>
                     <input placeholder="password" type="password" value="12345678" onChange={(e) => setPassword(e.target.value)} required/>
-                    <button type="submit" onClick={handleClick}  disabled={isFetching}>LOGIN</button>
-                    <a >FORGOT PASSWORD?</a>
+                    <button type="submit" onClick={handleClick} style={{width: 100}}>LOGIN</button>
                 </form>
             </div>
-            <input type="date" onChange={(event) => setValue(event.target.value)}/>
-            <input type="time" step='1' name="" id="" onChange={(event) => setTime(event.target.value)}/>
-            <div>{value}</div>
-            <div>{Time}</div>
-            <div></div> */}
+        
+            <div></div>
         </div>
      );
 }
