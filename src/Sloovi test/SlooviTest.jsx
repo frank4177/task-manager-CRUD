@@ -65,7 +65,7 @@ const SlooviTest = () => {
   const offset = date.getTimezoneOffset();
   var time_zone = parseInt(offset * 60);
 
-  
+
 
 // TASK TIME
   const str = tas.split(":");
@@ -88,6 +88,9 @@ const SlooviTest = () => {
       is_completed: is_completed,
     };
     addTask(task, dispatch);
+    setUpdateMode(null)
+    e.target.reset()
+
   };
 
   return (
@@ -102,7 +105,7 @@ const SlooviTest = () => {
           </div>
         </div>
 
-        <form action="" className={AddTask ? "form" : "noForm"}>
+        <form action="" className={AddTask ? "form" : "noForm"} onSubmit={handleClick}>
           <div className="form-wrapper">
             <div className="task-input-wrapper">
               <div className="task-titles">Task Description</div>
@@ -112,6 +115,7 @@ const SlooviTest = () => {
                 className="task-input"
                 type="text"
                 disabled={isFetching}
+                required
               />
             </div>
             <div className="date-and-time">
@@ -123,6 +127,7 @@ const SlooviTest = () => {
                   className="date-and-time-input"
                   type="date"
                   disabled={isFetching}
+                  required
                 />
               </div>
 
@@ -135,6 +140,7 @@ const SlooviTest = () => {
                   className="date-and-time-input"
                   type="time"
                   disabled={isFetching}
+                  required
                 />
               </div>
             </div>
@@ -147,6 +153,7 @@ const SlooviTest = () => {
                 className="task-input"
                 type="text"
                 disabled={isFetching}
+                required
               />
             </div>
           </div>
@@ -154,7 +161,7 @@ const SlooviTest = () => {
            
             <div className="btn-and-cancel-wrapper">
               <div className="cancel-button" onClick={()=> setAddTask(false)}>Cancel</div>
-              <button disabled={isFetching} onClick={handleClick}>Save</button>
+              <button disabled={isFetching}  type="submit" >Save</button>
             </div>
           </div>
         </form>
@@ -163,7 +170,7 @@ const SlooviTest = () => {
           <div className="all-task-wrap" task={task} key={index}>
             <div className="editable" onMouseEnter={() => mousehover(index)}
                 onMouseLeave={() => mousehover(index)}
-                  key={index}>
+                  key={index}> 
               <div className="editable-img-task-time-wrapper">
                 <img src={task.data.results.assigned_user_icon} alt="" />
                 <div className="editable-task-and-time-wrapper">
@@ -181,7 +188,8 @@ const SlooviTest = () => {
                   id="edit"
                   className="icon" 
                   onClick={() => toggle(index)}
-                  key={index}
+                  
+                  
                 >
                   <MdModeEditOutline />
                 </div>
