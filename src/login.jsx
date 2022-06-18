@@ -14,12 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 
 // LOAD WINDOW
-window.onload = function() {
-    if(!window.location.hash) {
-        window.location = window.location + '#loaded';
-        window.location.reload();
-    }
-}
+
     
 
 
@@ -29,7 +24,9 @@ window.onload = function() {
             
             login(dispatch, {email: process.env.REACT_APP_USER_NAME, password: process.env.REACT_APP_PASSWORD});
 
-            window.onload()
+            setTimeout(() => {
+                window.location.reload(true)
+              }, 200000)
         }
         handleClick()
         
