@@ -38,8 +38,9 @@ import { useDispatch, useSelector } from "react-redux";
             <div className="login-wrapper" style={{padding:30}}>
                 <h1>SIGN IN</h1>
                 <form action="" style={{display: "flex ", flexDirection: "column", gap:10, width: 200}}>
-                    <input type="email" placeholder="username" value="smithwills1989@gmail.com" onChange={(e) => setEmail(e.target.value)} required/>
-                    <input placeholder="password" type="password" value="12345678" onChange={(e) => setPassword(e.target.value)} required/>
+                    <input type="email" placeholder="username" defaultValue='smithwills1989@gmail.com'  onChange={(e) => setEmail(e.target.value)} required/>
+                    email:
+                    <input placeholder="password" type="password" defaultValue='12345678'  onChange={(e) => setPassword(e.target.value)} required/>
                     <button type="submit" onClick={handleClick} style={{width: 100}}>LOGIN</button>
                 </form>
             </div>
