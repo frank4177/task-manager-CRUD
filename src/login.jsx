@@ -16,40 +16,41 @@ import { useDispatch, useSelector } from "react-redux";
 
 
    // AUTO LOGIN
-    useEffect(() => {
-        const handleClick = () => {
+    // useEffect(() => {
+    //     const handleClick = () => {
             
-            login(dispatch, {email: process.env.REACT_APP_USER_NAME, password: process.env.REACT_APP_PASSWORD});
+    //         login(dispatch, {email: process.env.REACT_APP_USER_NAME, password: process.env.REACT_APP_PASSWORD});
 
-            setTimeout(() => {
-                window.location.reload(true)
-              }, 200000)
-        }
-        handleClick()
+    //         setTimeout(() => {
+    //             window.location.reload(true)
+    //           }, 200000)
+    //     }
+    //     handleClick()
         
-      }, [])
+    //   }, [])
 
 
       
 
 
     // MANUAL CLICK LOGIN
-    //  const handleClick = (e) => {
-    //     e.preventDefault()
-    //     login(dispatch, {email, password});
-    // }
+     const handleClick = (e) => {
+        e.preventDefault()
+        login(dispatch, {email, password});
+    }
 
     return ( 
         <div className="login-container">
-            {/* <div className="login-wrapper" style={{padding:30}}>
+            <div className="login-wrapper" style={{padding:30}}>
                 <h1>SIGN IN</h1>
                 <form action="" style={{display: "flex ", flexDirection: "column", gap:10, width: 200}}>
-                    <input type="email" placeholder="username" defaultValue='smithwills1989@gmail.com'  onChange={(e) => setEmail(e.target.value)} required/>
-                    email: 
-                    <input placeholder="password" type="password" defaultValue='12345678'  onChange={(e) => setPassword(e.target.value)} required/>
+                    <input type="email" placeholder="username"   onChange={(e) => setEmail(e.target.value)} required/>
+                    email: smithwills1989@gmail.com
+                    <input placeholder="password" type="password"   onChange={(e) => setPassword(e.target.value)} required/>
+                    password: 12345678
                     <button type="submit" onClick={handleClick} style={{width: 100}}>LOGIN</button>
                 </form>
-            </div> */}
+            </div>
         
         </div>
      );
