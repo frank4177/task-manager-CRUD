@@ -15,7 +15,7 @@ const SlooviTest = () => {
   const isFetching = useSelector((state) => state.task.isFetching);
   // const validation = useSelector((state) => state.task.Tasks.find(koom => koom));
   const error = useSelector((state) => state.user.error);
-  const Tasks = useSelector((state) => state.task.Tasks);
+  const Tasks = useSelector((state) => state.task?.Tasks);
   const [AddTask, setAddTask] = useState(false);
   const [task_msg, setTask] = useState("");
   const [task_date, setDate] = useState("");
@@ -26,7 +26,6 @@ const SlooviTest = () => {
   const [hover, setHover] = useState(false);
   const [validationCheck, setValidationCheck] = useState();
   const [validationAfterCheckMessage, setValidationAfterCheckMessage] = useState();
-
 
 
   useEffect(()=>{
@@ -188,7 +187,7 @@ const SlooviTest = () => {
           </div>
         </form>
 
-        {Tasks.map((task, index) => (
+        {Tasks?.map((task, index) => (
           <div className="all-task-wrap" task={task} key={index}>
             <div className="editable" onMouseEnter={() => mousehover(index)}
                 onMouseLeave={() => mousehover(index)}
