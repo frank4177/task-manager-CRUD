@@ -24,9 +24,10 @@ const SlooviTest = () => {
   const [updateMode, setUpdateMode] = useState(false);
   const dispatch = useDispatch();
   const [hover, setHover] = useState(false);
-  const [validationCheck, setValidationCheck] = useState([]);
+  const [validationCheck, setValidationCheck] = useState();
   const [validationAfterCheckMessage, setValidationAfterCheckMessage] = useState();
 
+  // console.log(Tasks)
 
   useEffect(()=>{
     getTasks(dispatch)
@@ -51,7 +52,7 @@ const SlooviTest = () => {
   // }, [])
 
   useEffect(() => {
-    setValidationCheck(Tasks)
+    setValidationCheck([Tasks])
   }, [])
   
   
@@ -121,7 +122,7 @@ const SlooviTest = () => {
 
   return (
     <div className="sloov-container">
-      {error ? <div className="logout">You're not logged in. please login</div> : <div className="login">You're logged in</div>}
+      {error ? <div className="logout">You're not logged in. please login</div> : <div className="login">You're logged in.</div>}
       <div className="sloovi-wrapper">
         <div className="task-wrapper">
           <label className="task-label-and-quantity">TASKS</label>
@@ -192,7 +193,7 @@ const SlooviTest = () => {
           </div>
         </form>
 
-        {validationCheck.map((task, index) => (
+        {Array.isArray(Tasks)?Tasks.map((task, index) => (
           <div className="all-task-wrap" task={task} key={index}>
             <div className="editable" onMouseEnter={() => mousehover(index)}
                 onMouseLeave={() => mousehover(index)}
@@ -304,7 +305,7 @@ const SlooviTest = () => {
               </form>
             ) : null}
           </div>
-        ))}
+        )) : null}
       </div>
     </div>
   );

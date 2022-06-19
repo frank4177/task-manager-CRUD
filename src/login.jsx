@@ -23,7 +23,7 @@ import { useDispatch, useSelector } from "react-redux";
 
     //         setTimeout(() => {
     //             window.location.reload(true)
-    //           }, 200000)
+    //           }, 1000)
     //     }
     //     handleClick()
         
@@ -37,6 +37,9 @@ import { useDispatch, useSelector } from "react-redux";
      const handleClick = (e) => {
         e.preventDefault()
         login(dispatch, {email, password});
+        setTimeout(() => {
+                       window.location.reload(true)
+                      }, 3000)
     }
 
     return ( 
