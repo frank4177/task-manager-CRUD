@@ -7,6 +7,7 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { useSelector, useDispatch } from "react-redux";
 import { addTask, getTasks, updateTasks, deleteTask } from "../redux/apiCalls";
 
+
 const SlooviTest = () => {
   const isFetching = useSelector((state) => state.task.isFetching);
   // const validation = useSelector((state) => state.task.Tasks.find(koom => koom));
@@ -22,15 +23,16 @@ const SlooviTest = () => {
   const [hover, setHover] = useState(false);
   // const [validationCheck, setValidationCheck] = useState();
   // const [validationAfterCheckMessage, setValidationAfterCheckMessage] = useState();
-   const [is_completed, setIs_completed] = useState(0);
+   const [is_completed, setIs_completed] = useState();
    const [successRessult, setSucessResult] = useState("");
    const [notLogged, setNotLogged] = useState("");
 
 
 
-
+   // LOGIN MESSAGE
    useEffect(() => {
-     
+     setIs_completed(0)
+
     if (error === "success") {
       setSucessResult("You're logged in.")
     } else{
@@ -39,6 +41,7 @@ const SlooviTest = () => {
    }, [])
    
 
+   //TASKS DISPATCH
   useEffect(()=>{
     getTasks(dispatch)
   },[dispatch])
@@ -57,13 +60,6 @@ const SlooviTest = () => {
   //   setValidationCheck(validation)
   //   console.log(validationCheck);
   //   validationCheck === "Invalid Access Token" ? setValidationAfterCheckMessage("If after saving you got a blank Task, please refresh your browser an try again") : console.log(false);
-    
-   
-  // }, [])
-
-  // useEffect(() => {
-  //   setValidationCheck([Tasks])
-  // }, [])
   
   
 
@@ -145,7 +141,7 @@ const SlooviTest = () => {
           </div>
         </div>
         
-
+        {/* ADD TASK FORM */}
         <form action="" className={AddTask ? "form" : "noForm"} onSubmit={handleClick}>
           <div className="form-wrapper">
             <div className="task-input-wrapper">
@@ -207,6 +203,7 @@ const SlooviTest = () => {
           </div>
         </form>
 
+        {/* FETCH TASKS */}
         {Array.isArray(Tasks)?Tasks.map((task, index) => (
           <div className="all-task-wrap" task={task} key={index}>
             <div className="editable" onMouseEnter={() => mousehover(index)}
@@ -245,6 +242,7 @@ const SlooviTest = () => {
               </div>
             </div>
 
+            {/* UPDATE TASK FORM */}
             {updateMode === index ? (
               <form action="" className="form">
                 
