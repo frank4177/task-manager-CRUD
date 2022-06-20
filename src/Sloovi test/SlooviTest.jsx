@@ -12,7 +12,6 @@ const SlooviTest = () => {
   // const validation = useSelector((state) => state.task.Tasks.find(koom => koom));
   const error = useSelector((state) => state.user.currentUser.status);
   const Tasks = useSelector((state) => state.task.Tasks);
-  const quantity = useSelector((state) => state.task.Tasks.map(task => task));
   const [AddTask, setAddTask] = useState(false);
   const [task_msg, setTask] = useState("");
   const [task_date, setDate] = useState("");
@@ -137,11 +136,12 @@ const SlooviTest = () => {
       <div className="sloovi-wrapper">
         <div className="task-wrapper">
           <label className="task-label-and-quantity">TASKS</label>
-          <span className="task-label-and-quantity">{quantity.length}</span>
+          <span className="task-label-and-quantity">{Tasks.length}</span>
           <div onClick={() => setAddTask(!AddTask)} className="add">
             <GrFormAdd />
           </div>
         </div>
+        
 
         <form action="" className={AddTask ? "form" : "noForm"} onSubmit={handleClick}>
           <div className="form-wrapper">
