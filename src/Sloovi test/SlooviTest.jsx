@@ -257,7 +257,7 @@ const SlooviTest = () => {
                       type="text"
                       defaultValue={task.task_msg}
                       disabled={isFetching}
-                      autoFocus="true"
+                      autoFocus={true}
                     />
                   </div>
                   <div className="date-and-time">
