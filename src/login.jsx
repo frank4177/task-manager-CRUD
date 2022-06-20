@@ -44,7 +44,7 @@ import { useDispatch, useSelector } from "react-redux";
 
     return ( 
         <div className="login-container">
-            <div className="login-wrapper" style={{padding:30}}>
+            <div className="login-wrapper" style={{paddingLeft:30, paddingBottom:15}}>
                 <h1>SIGN IN</h1>
                 <form action="" style={{display: "flex ", flexDirection: "column", gap:10, width: 200}}>
                     <input type="email" placeholder="username"   onChange={(e) => setEmail(e.target.value)} required/>

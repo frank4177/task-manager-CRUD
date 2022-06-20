@@ -6,8 +6,7 @@ export const TaskSlice = createSlice({
     Tasks: [],
     isFetching: false,
     error: false,
-    is_completed: 0,
-    quantity: 0,
+    is_completed: 1,
   },
   reducers: {
     //GET ALL
@@ -27,6 +26,7 @@ export const TaskSlice = createSlice({
     deleteTaskStart: (state) => {
       state.isFetching = true;
       state.error = false;
+      state.is_completed = 0;
     },
     deleteTaskSuccess: (state, action) => {
       state.isFetching = false;
@@ -34,7 +34,6 @@ export const TaskSlice = createSlice({
         state.Tasks.findIndex((item) => item.id === action.payload.id),
         1
       );
-      state.quantity -= 1;
     },
     deleteTaskFailure: (state) => {
       state.isFetching = false;
@@ -44,37 +43,35 @@ export const TaskSlice = createSlice({
     updateTaskStart: (state) => {
       state.isFetching = true;
       state.error = false;
+      state.is_completed = 0;
+
     },
     updateTaskSuccess: (state, action) => {
      
       state.isFetching = false;
-
       state.Tasks[
         state.Tasks.findIndex((item) => item.id === action.payload.id)
-      ] = action.payload;
-      state.is_completed = 1;
+      ] = action.payload.task;
+      
     },
     updateTaskFailure: (state) => {
       state.isFetching = false;
       state.error = true;
-      state.is_completed = 0;
     },
     //add
     addTaskStart: (state) => {
       state.isFetching = true;
       state.error = false;
+      state.is_completed = 0;
     },
     addTaskSuccess: (state, action) => {
       state.isFetching = false;
       state.Tasks.push(action.payload);
-      state.is_completed = 1;
-      state.quantity += 1;
 
     },
     addTaskFailure: (state) => {
       state.isFetching = false;
       state.error = true;
-      state.is_completed = 0;
     },
   },
 });

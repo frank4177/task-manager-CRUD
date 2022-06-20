@@ -6,16 +6,13 @@ import { MdModeEditOutline } from "react-icons/md";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { useSelector, useDispatch } from "react-redux";
 import { addTask, getTasks, updateTasks, deleteTask } from "../redux/apiCalls";
-import { taskRequest} from "../requestMethods";
-
 
 const SlooviTest = () => {
-  const quantity = useSelector((state) => state.task.quantity);
-  const is_completed = useSelector((state) => state.task.is_completed);
   const isFetching = useSelector((state) => state.task.isFetching);
   // const validation = useSelector((state) => state.task.Tasks.find(koom => koom));
-  const error = useSelector((state) => state.user.error);
+  const error = useSelector((state) => state.user.currentUser.status);
   const Tasks = useSelector((state) => state.task.Tasks);
+  const quantity = useSelector((state) => state.task.Tasks.map(task => task));
   const [AddTask, setAddTask] = useState(false);
   const [task_msg, setTask] = useState("");
   const [task_date, setDate] = useState("");
@@ -24,10 +21,22 @@ const SlooviTest = () => {
   const [updateMode, setUpdateMode] = useState(false);
   const dispatch = useDispatch();
   const [hover, setHover] = useState(false);
-  const [validationCheck, setValidationCheck] = useState();
-  const [validationAfterCheckMessage, setValidationAfterCheckMessage] = useState();
+  // const [validationCheck, setValidationCheck] = useState();
+  // const [validationAfterCheckMessage, setValidationAfterCheckMessage] = useState();
+   const [is_completed, setIs_completed] = useState(0);
+   const [successRessult, setSucessResult] = useState(false);
 
-  // console.log(Tasks)
+
+
+   useEffect(() => {
+     
+    if (error === 200) {
+      setSucessResult(!successRessult)
+    } else{
+      setSucessResult("li")
+    }
+   }, [])
+   
 
   useEffect(()=>{
     getTasks(dispatch)
@@ -51,9 +60,9 @@ const SlooviTest = () => {
    
   // }, [])
 
-  useEffect(() => {
-    setValidationCheck([Tasks])
-  }, [])
+  // useEffect(() => {
+  //   setValidationCheck([Tasks])
+  // }, [])
   
   
 
@@ -106,6 +115,7 @@ const SlooviTest = () => {
 // ADD TASK
   const handleClick = (e) => {
     e.preventDefault();
+
     const task = {
       task_time,
       time_zone,
@@ -122,11 +132,12 @@ const SlooviTest = () => {
 
   return (
     <div className="sloov-container">
-      {error ? <div className="logout">You're not logged in. please login</div> : <div className="login">You're logged in.</div>}
+      <div>{successRessult}</div>
+      {successRessult  ? <div className="logout">You're not logged in. please login</div> : <div className="login">You're logged in.</div>}
       <div className="sloovi-wrapper">
         <div className="task-wrapper">
           <label className="task-label-and-quantity">TASKS</label>
-          <span className="task-label-and-quantity">{quantity}</span>
+          <span className="task-label-and-quantity">{quantity.length}</span>
           <div onClick={() => setAddTask(!AddTask)} className="add">
             <GrFormAdd />
           </div>
@@ -199,7 +210,6 @@ const SlooviTest = () => {
                 onMouseLeave={() => mousehover(index)}
                   key={index}> 
               <div className="editable-img-task-time-wrapper">
-                <img src={task.assigned_user_icon} alt="" />
                 <div className="editable-task-and-time-wrapper">
                   <div className="editable-task">
                     {task.task_msg}

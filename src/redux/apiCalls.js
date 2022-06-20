@@ -47,7 +47,7 @@ export const getTasks = async (dispatch) => {
 
       //  const getSingle = await taskRequest.get(`/task/lead_465c14d0e99e4972b6b21ffecf3dd691/${id}?company_id=company_413ef22b6237417fb1fba7917f0f69e7`);
     
-
+      
       dispatch(getTaskSuccess(res.data.results))
 
     }catch (err) {
@@ -63,11 +63,9 @@ export const updateTasks = async (id, task, dispatch) => {
   dispatch(updateTaskStart());
   try {
     const res = await taskRequest.put(
-      `/task/lead_465c14d0e99e4972b6b21ffecf3dd691/${id}?company_id=company_413ef22b6237417fb1fba7917f0f69e7`,
-      task
+      `/task/lead_465c14d0e99e4972b6b21ffecf3dd691/${id}?company_id=company_413ef22b6237417fb1fba7917f0f69e7`, task
     );
-
-    dispatch(updateTaskSuccess(res.data.results));
+    dispatch(updateTaskSuccess({id, task}));
   } catch (err) {
     dispatch(updateTaskFailure());
   }
@@ -77,10 +75,9 @@ export const deleteTask = async (id, dispatch) => {
   dispatch(deleteTaskStart());
   try {
     const res = await taskRequest.delete(
-      `/task/lead_465c14d0e99e4972b6b21ffecf3dd691/${id}?company_id=company_413ef22b6237417fb1fba7917f0f69e7`,
-      { id }
+      `/task/lead_465c14d0e99e4972b6b21ffecf3dd691/${id}?company_id=company_413ef22b6237417fb1fba7917f0f69e7`
     );
-    dispatch(deleteTaskSuccess(res.data.results));
+    dispatch(deleteTaskSuccess(id));
   } catch (err) {
     dispatch(deleteTaskFailure());
   }
