@@ -23,16 +23,18 @@ const SlooviTest = () => {
   // const [validationCheck, setValidationCheck] = useState();
   // const [validationAfterCheckMessage, setValidationAfterCheckMessage] = useState();
    const [is_completed, setIs_completed] = useState(0);
-   const [successRessult, setSucessResult] = useState(false);
+   const [successRessult, setSucessResult] = useState("");
+   const [notLogged, setNotLogged] = useState("");
+
 
 
 
    useEffect(() => {
      
     if (error === 200) {
-      setSucessResult(!successRessult)
+      setSucessResult("You're logged in.")
     } else{
-      setSucessResult("li")
+      setNotLogged("You're not logged in.")
     }
    }, [])
    
@@ -131,8 +133,9 @@ const SlooviTest = () => {
 
   return (
     <div className="sloov-container">
-      <div>{successRessult}</div>
-      {successRessult  ? <div className="logout">You're not logged in. please login</div> : <div className="login">You're logged in.</div>}
+      <div></div>
+      { successRessult && <div className="login">{successRessult}</div>}  
+      {notLogged && <div  className="logout">{notLogged}</div>}
       <div className="sloovi-wrapper">
         <div className="task-wrapper">
           <label className="task-label-and-quantity">TASKS</label>
