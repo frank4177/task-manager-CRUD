@@ -10,7 +10,7 @@ import { addTask, getTasks, updateTasks, deleteTask } from "../redux/apiCalls";
 const SlooviTest = () => {
   const isFetching = useSelector((state) => state.task.isFetching);
   // const validation = useSelector((state) => state.task.Tasks.find(koom => koom));
-  const error = useSelector((state) => state.user.currentUser.data.status);
+  const error = useSelector((state) => state.user.currentUser?.data?.status);
   const Tasks = useSelector((state) => state.task.Tasks);
   const [AddTask, setAddTask] = useState(false);
   const [task_msg, setTask] = useState("");
